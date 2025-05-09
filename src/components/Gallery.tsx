@@ -24,7 +24,8 @@ const galleryItems: GalleryItem[] = [
     height: 600
   },
   {
-    id: 2,    image: 'images/fruit-tart.jpg',
+    id: 2, 
+    image: 'images/fruit-tart.jpg',
     title: 'Seasonal Fruit Tart',
     category: 'Pastries',
     width: 800,
@@ -39,7 +40,8 @@ const galleryItems: GalleryItem[] = [
     height: 600
   },
   {
-    id: 4,    image: 'images/macarons.jpg',
+    id: 4, 
+    image: 'images/macarons.jpg',
     title: 'French Macaron Collection',
     category: 'Pastries',
     width: 800,
@@ -89,7 +91,7 @@ const galleryItems: GalleryItem[] = [
 
 const Gallery = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);  const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
+  const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null); const [imageErrors, setImageErrors] = useState<Set<number>>(new Set());
   const sectionRef = useScrollAnimation('fade-in');
 
   const handleImageError = (id: number) => {
@@ -160,11 +162,10 @@ const Gallery = () => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-2 rounded-full capitalize transition-all duration-300 ${
-                selectedCategory === category
+              className={`px-6 py-2 rounded-full capitalize transition-all duration-300 ${selectedCategory === category
                   ? 'bg-amber-600 text-white shadow-lg dark:bg-amber-500 dark:text-white'
                   : 'bg-white text-gray-700 hover:bg-amber-50 hover:shadow-md dark:bg-gray-800 dark:text-gray-100 dark:hover:bg-gray-700'
-              }`}
+                }`}
             >
               {category}
             </motion.button>
@@ -196,15 +197,15 @@ const Gallery = () => {
                     <div className="absolute inset-0 flex items-center justify-center bg-gray-200 dark:bg-gray-700">
                       <p className="text-gray-500 dark:text-gray-300">Image not available</p>
                     </div>
-                  ) : (                    <img
-                      src={import.meta.env.BASE_URL + item.image.replace('./', '')}
-                      alt={`${item.title} - ${item.category}`}
-                      width={item.width}
-                      height={item.height}
-                      loading="lazy"
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                      onError={() => handleImageError(item.id)}
-                    />
+                  ) : (<img
+                    src={import.meta.env.BASE_URL + item.image.replace('./', '')}
+                    alt={`${item.title} - ${item.category}`}
+                    width={item.width}
+                    height={item.height}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    onError={() => handleImageError(item.id)}
+                  />
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-end backdrop-blur-sm">
                     <div className="w-full p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -242,13 +243,13 @@ const Gallery = () => {
                 onClick={e => e.stopPropagation()}
               >
                 <div className="relative w-full h-[75vh] sm:h-[80vh] overflow-hidden">                  <img
-                    src={import.meta.env.BASE_URL + selectedImage.image.replace('./', '')}
-                    alt={selectedImage.title}
-                    width={selectedImage.width}
-                    height={selectedImage.height}
-                    className="w-full h-full object-contain rounded-lg shadow-2xl transition-all duration-300"
-                    onError={() => handleImageError(selectedImage.id)}
-                  />
+                  src={import.meta.env.BASE_URL + selectedImage.image.replace('./', '')}
+                  alt={selectedImage.title}
+                  width={selectedImage.width}
+                  height={selectedImage.height}
+                  className="w-full h-full object-contain rounded-lg shadow-2xl transition-all duration-300"
+                  onError={() => handleImageError(selectedImage.id)}
+                />
                 </div>
                 <div className="p-6 bg-gradient-to-b from-gray-900 to-black rounded-b-lg">
                   <div className="max-w-2xl mx-auto">
